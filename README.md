@@ -1,4 +1,5 @@
 # Project Documentation
+[Vercel App](https://spacex-next-js-wien.vercel.app/login)
 
 ## Overview
 
@@ -16,7 +17,7 @@ To set up the project, follow these steps:
 
 To run the application, use the command `npm run start`. This will start the application on `localhost:3000`.
 Create a .env file in the root directory and add the following line:
-```credentials=user@test.com:password```
+```credentials=user@test.com:password```. For vercel deployed app user name is "user@test.com" and password is "password".
 
 
 
