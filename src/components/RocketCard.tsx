@@ -27,24 +27,24 @@ export default function RocketCard({
 
     const launchDate = formatDateUTC(new Date(launch_date));
     return (
-        <div className="flex flex-row items-center justify-around w-4/5  bg-white shadow-lg rounded ">
-            <div className="flex flex-col items-center justify-center w-1/3 p-4">
-                <img src={links?.mission_patch} alt="rocket" className="w-32 h-32 rounded-full" onError={(e) => {
+        <div className="flex flex-row items-center justify-evenly w-4/5  bg-white shadow-lg rounded ">
+            <div className="flex flex-col items-center justify-center w-1/3 p-4 tablet:p-2">
+                <img src={links?.mission_patch} alt="rocket" className="w-32 h-32 rounded-full tablet:w-24 h24" onError={(e) => {
                     (e.target as HTMLImageElement).onerror = null;
                     (e.target as HTMLImageElement).src = "/rocket-fallback.png"
                 }}/>
 
-                <h2 className="mt-4 text-xl font-bold">{rocket?.rocket_name}</h2>
+                <h2 className="mt-4 text-xl font-bold tablet:text-sm laptop:text-xs">{rocket?.rocket_name}</h2>
             </div>
 
-            <p className="mt-2 text-sm text-gray-500">Launched from {launch_site?.site_name} on {launchDate} for
+            <p className="mt-2 text-sm text-gray-500 tablet:p-2" >Launched from {launch_site?.site_name} on {launchDate} for
                 mission "{mission_name}".</p>
             <div className="flex flex-col justify-between gap-3.5 ">
             <a href={links?.article_link}>
-                    <button className="px-4 py-2 text-sm text-white bg-blue-600 rounded-md w-40 tablet:bg-green-900">View Details</button>
+                    <button className="px-4 py-2 text-sm text-white bg-blue-600 rounded-md w-40 tablet:w-20 mx-2">View Details</button>
                 </a>
                 <a href={links?.video_link}>
-                    <button className="px-4 py-2 text-sm text-white bg-blue-600 rounded-md w-40">View Video</button>
+                    <button className="px-4 py-2 text-sm text-white bg-blue-600 rounded-md w-40 tablet:w-20 mx-2">View Video</button>
                 </a>
 
             </div>
