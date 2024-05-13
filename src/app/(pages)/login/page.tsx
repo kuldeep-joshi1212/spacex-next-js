@@ -1,9 +1,12 @@
 'use client'
 
+import {redirect} from "next/navigation";
+import {useEffect} from "react";
+
 export default function Login() {
+
     let handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const [AUTH_USER, AUTH_PASS] = (process.env.credentials || ':').split(':');
         const formData = new FormData(event.currentTarget);
         const email = formData.get('email') as string;
         const password = formData.get('password') as string;
@@ -14,6 +17,16 @@ export default function Login() {
             alert('Invalid credentials');
         }
     }
+    useEffect(() => {
+        async function checkAuth() {
+            const res = await fetch('/api/checkLogin');
+            if (res.status === 200) {
+                window.location.href = '/rockets';
+            }
+        }
+        checkAuth();
+
+    },[]);
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-md w-full space-y-8">
