@@ -1,16 +1,18 @@
 'use client'
 
 export default function Login() {
-    let  handleSubmit = async (event:React.FormEvent<HTMLFormElement>) => {
+    let handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const [AUTH_USER, AUTH_PASS] = (process.env.credentials || ':').split(':');
-        const res=await fetch(`/api/login?username=${event.target.email.value}&password=${event.target.password.value}`);
-        if(res.status===200){
+        const formData = new FormData(event.currentTarget);
+        const email = formData.get('email') as string;
+        const password = formData.get('password') as string;
+        const res = await fetch(`/api/login?username=${email}&password=${password}`);
+        if (res.status === 200) {
             window.location.href = '/rockets';
         } else {
             alert('Invalid credentials');
         }
-
     }
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
